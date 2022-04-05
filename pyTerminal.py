@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 
 '''
-Created on 2022年3月24日 3.24 2022
+Created on 2022年3月24日
 @author: HXYMCH
 '''
 

@@ -1,1 +1,0 @@
-[{'name': 'Admin', 'password': '123456'}, {'name': 'XYMC', 'password': '061212'}]

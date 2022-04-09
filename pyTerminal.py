@@ -90,11 +90,6 @@ class pyTerminal(cmd.Cmd):
     intro = 'Welcome to the pyTerminal shell by HXYMCH.\n'+'Type help or ? to list commands.'+'\nYou are in python '+pyVer + '.\n'
     prompt = '>>Terminal>> '
     file = None
-    
-    def __init__(self):
-        importlib.reload(sys)
-        sys.setdefaultencoding('utf-8')
-        cmd.Cmd.__init__(self)
 
     def do_none(self,arg):
         print('')

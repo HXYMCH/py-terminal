@@ -55,9 +55,8 @@ while True:
         print('You are in the shell!\n')
         break
     else:
-        password = input('Please enter your Password:')
         while True:
-            password = input('Please enter your password:')
+            password = input('Please enter your Password:')
             if password == '':
                 print("the password couldn't be none!")
                 continue
@@ -75,6 +74,7 @@ while True:
             else:
                 print('Your password or name is wrong!')
                 continue
+        break
 
 
 '''
@@ -82,10 +82,7 @@ make a Terminal.
 '''
 
 class pyTerminal(cmd.Cmd):
-    intro = 'Welcome to the pyTerminal shell by HXYMCH.\n'
-    +'Type help or ? to list commands.'
-    +'\nYou are in python '
-    +pyVer + '.\n'
+    intro = 'Welcome to the pyTerminal shell by HXYMCH.\n'+'Type help or ? to list commands.'+'\nYou are in python '+pyVer + '.\n'
     prompt = '>>Terminal>> '
     file = None
 

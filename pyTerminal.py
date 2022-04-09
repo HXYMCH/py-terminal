@@ -1,5 +1,6 @@
 # !/usr/bin/python
 # -*- coding: UTF-8 -*-
+
 # awa~
 
 '''
@@ -13,7 +14,11 @@ If you have some ideas, you could let me add it in this program.
 Please touch me at 'liusibo233@outlook.com', and thank you.
 '''
 
-import cmd, sys, time, platform, os
+import cmd
+from imp import reload
+import sys, os
+import time
+import platform
 
 
 pyVer = platform.python_version()
@@ -85,6 +90,11 @@ class pyTerminal(cmd.Cmd):
     intro = 'Welcome to the pyTerminal shell by HXYMCH.\n'+'Type help or ? to list commands.'+'\nYou are in python '+pyVer + '.\n'
     prompt = '>>Terminal>> '
     file = None
+    
+    def __init__(self):
+        reload(sys)
+        sys.setdefaultencoding('utf-8')
+        cmd.Cmd.__init__(self)
 
     def do_none(self,arg):
         print('')
@@ -95,13 +105,14 @@ class pyTerminal(cmd.Cmd):
     
     def do_calc(self,arg):
         os.system('app\calc.py')
-        return 0
+        print('done!')
     
     def help_calc(self):
         print('open a calculator.')
 
     def do_snake(self,arg):
         os.system('app\snake.py')
+        print('done!')
     
     def help_snake(self):
         print('open a Greedy snake')
@@ -111,6 +122,14 @@ class pyTerminal(cmd.Cmd):
         b = os.path.sep
         c = a+b+'app'+b
         os.system('python '+c+'tree.py')
+        print('done!')
+    
+    def do_2048(self,arg):
+        a = os.path.abspath('.')
+        b = os.path.sep
+        c = a+b+'app'+b
+        print(c+'2048.py')
+        os.system('python '+c+'2048.py')
         print('done!')
 
     def do_cmd(self,arg):
@@ -131,7 +150,12 @@ class pyTerminal(cmd.Cmd):
 
     def help_stop(self):
         print('Use it to close the shell.\n')
+    
+    def emptyline(self):
+        pass
 
+    def default(self, line):
+        print('What do you input?')
 def parse(arg):
     return tuple(map(int, arg.split()))
 
@@ -141,4 +165,9 @@ run the Terminal
 '''
 
 if __name__ == '__main__':
-    pyTerminal().cmdloop()
+    try:
+        os.system('cls')
+        client = pyTerminal()
+        client.cmdloop()
+    except:
+        exit()

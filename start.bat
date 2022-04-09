@@ -9,7 +9,6 @@ goto information
 :information
 
 :: run py-terminal
-date
 dir
 cd app
 dir

@@ -1,14 +1,15 @@
 :: !/bin/bash
 
 goto information
-#################################################
-# Author : HXYMCH
-# Date : 2022-4-9
-# github : https://github.com/HXYMCH/py-terminal
-#################################################
+##################################################
+# Author : HXYMCH                                #
+# Date : 2022-4-9                                #
+# github : https://github.com/HXYMCH/py-terminal #
+##################################################
 :information
 
 :: run py-terminal
+date
 dir
 cd app
 dir

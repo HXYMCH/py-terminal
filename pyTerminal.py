@@ -15,7 +15,7 @@ Please touch me at 'liusibo233@outlook.com', and thank you.
 '''
 
 import cmd
-from imp import reload
+import importlib
 import sys, os
 import time
 import platform
@@ -92,7 +92,7 @@ class pyTerminal(cmd.Cmd):
     file = None
     
     def __init__(self):
-        reload(sys)
+        importlib.reload(sys)
         sys.setdefaultencoding('utf-8')
         cmd.Cmd.__init__(self)
 
@@ -156,6 +156,7 @@ class pyTerminal(cmd.Cmd):
 
     def default(self, line):
         print('What do you input?')
+
 def parse(arg):
     return tuple(map(int, arg.split()))
 

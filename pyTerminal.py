@@ -14,14 +14,17 @@ If you have some ideas, you could let me add it in this program.
 Please touch me at 'liusibo233@outlook.com', and thank you.
 '''
 
-import cmd
+from cmd import *
 import importlib
 import sys, os
 import time
 import platform
+import random
+import string
 
 
-pyVer = platform.python_version()
+PYTHONVERSION = platform.python_version()
+SYSTEMVERSION = platform.platform()
 
 '''
 make a login and register system.
@@ -86,8 +89,8 @@ while True:
 make a Terminal.
 '''
 
-class pyTerminal(cmd.Cmd):
-    intro = 'Welcome to the pyTerminal shell by HXYMCH.\n'+'Type help or ? to list commands.'+'\nYou are in python '+pyVer + '.\n'
+class pyTerminal(Cmd):
+    intro = 'Welcome to the pyTerminal shell by HXYMCH.\n' + 'Type help or ? to list commands.' + '\nPress CTRL+C to close kill the Terminal.' + '\nYou are in python ' + PYTHONVERSION + '.\nYou are in ' + SYSTEMVERSION + '.\n'
     prompt = '>>Terminal>> '
     file = None
 
@@ -98,6 +101,20 @@ class pyTerminal(cmd.Cmd):
     def help_none(self):
         print('Use it for None.\n')
     
+    def do_createPassword(self,arg):
+        total = string.ascii_letters + string.digits + string.punctuation
+        length = arg
+        print("".join(random.sample(total, length)))
+    
+    def help_createPassword(self):
+        print('create a password.')
+
+    def do_cmd(self,arg):
+        os.system(arg)
+    
+    def help_cmd(self,arg):
+        print('run your command')
+
     def do_calc(self,arg):
         os.system('app\calc.py')
         print('done!')
@@ -129,17 +146,13 @@ class pyTerminal(cmd.Cmd):
     
     def do_TicTacToe(self,arg):
         os.system('app\TicTacToe.py')
-        print('Done!')
+        print('done!')
     
     def help_TicTacToe(self):
         print('TicTacToe')
 
-    def do_cmd(self,arg):
-        os.system(arg)
-        return 0
-
-    def help_cmd(self):
-        print('Do like cmd.\n')
+    def turtle(self, arg):
+        os.system('shell\Turtleshell.py')
 
     def do_stop(self, arg):
         print('Thank you for using pyTerminal, and the shell will be close in 2 seconds.')
@@ -156,8 +169,15 @@ class pyTerminal(cmd.Cmd):
     def emptyline(self):
         pass
 
-    def default(self, line):
-        print('What do you input?')
+    def default(self, arg):
+        try:
+            arg = eval(arg)
+            print(arg)
+        except:
+            if arg == 'fuck' or arg == 'f*ck' or arg == 'fu*k' or arg == 'f**k' or arg == '***k' or arg == 'f***':
+                print('Please be polite!')
+            else:
+                print('What do you input???')
 
 def parse(arg):
     return tuple(map(int, arg.split()))
@@ -170,7 +190,7 @@ run the Terminal
 if __name__ == '__main__':
     try:
         os.system('cls')
-        client = pyTerminal()
-        client.cmdloop()
+        shell = pyTerminal()
+        shell.cmdloop()
     except:
         exit()

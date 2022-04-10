@@ -126,6 +126,13 @@ class pyTerminal(cmd.Cmd):
         print(c+'2048.py')
         os.system('python '+c+'2048.py')
         print('done!')
+    
+    def do_TicTacToe(self,arg):
+        os.system('app\TicTacToe.py')
+        print('Done!')
+    
+    def help_TicTacToe(self):
+        print('TicTacToe')
 
     def do_cmd(self,arg):
         os.system(arg)
